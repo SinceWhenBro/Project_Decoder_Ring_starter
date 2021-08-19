@@ -27,30 +27,40 @@ const polybiusModule = (function () {
     45: 'y',
     55: 'z'
   }
+  //makes an array filled with smaller arrays that hold the key value pair
   const cipherArr = Object.entries(cipher)
+  //allows for i or j to be used at property '42'
   cipherArr.push([42, 'i'])
   cipherArr.push([42, 'j'])
 
 
   function polybius(input, encode =true) {
     // your solution code here
+    //counting how many chars are not spaces from the input
     const nonSpaceChars = input.split(' ').reduce((acc, ele) => acc += ele.length, 0)
     let answerStr = ''
+    //checks if number of chars is even
     if (!encode && nonSpaceChars % 2 != 0) {
       return false
     } else if (!encode) {
       let cipherKey = ''
+      //loops through input to pull each char
       for (const char of input) {
+        //if char is a space add space to return value
         if (char === ' ') {
           answerStr += char
         } else if (cipherKey.length > 0) {
+          //adds cipherKey to char
           cipherKey += char
+          //finds the int value of the cipher object at the index of cipher key, then adds that value to the return 
           answerStr += cipher[parseInt(cipherKey)]
+          //reinitializes cipherKey to an empty string
           cipherKey = ''
         } else {
           cipherKey += char
         }
       }
+      //return user output
       return answerStr
     } else {
       for (char of input) {
@@ -58,9 +68,12 @@ const polybiusModule = (function () {
           answerStr += char
           continue
         }
+        //finds the subarray that has the letter were trying to encode
         const encoded = cipherArr.filter(subArr => subArr.includes(char))[0]
+        //pushing the first value of the array, the number associated with that 
         answerStr += encoded[0]
       }
+      //return user output
       return answerStr
     }
 

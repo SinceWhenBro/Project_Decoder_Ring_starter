@@ -8,15 +8,19 @@ describe('polybius', () =>{
         expect(actual).to.equal("4432423352125413");
     });
 
-    it('SHould translate bot i and j to 42', () =>{
+    it('Should translate bot i and j to 42', () =>{
         let actual = polybius("thjnkful");
         expect(actual).to.equal("4432423352125413");
     });
 
-    it('Should leave spaces as is', () =>{
-        let actual = polybius("Hello world");
-        expect(actual).to.equal('3251131343 2543241341');
-    });
+    it("should leave spaces as is", () => {
+        const expected = "hello world";
+        const actual = polybius("3251131343 2543241341", false)
+        const expected1 = "3251131343 2543241341"
+        const actual1 = polybius("hello world")
+        expect(actual).to.equal(expected)
+        expect(actual1).to.equal(expected1)
+    })
 
     it('Should decode a message by translating each pair of numbers into a letter', () =>{
         let actual = polybius("3251131343 2543241341", false);

@@ -45,11 +45,11 @@ const caesarModule = (function () {
         else if(encode === false){
           //initializes shifted value to lowerCase - given shift, so we can reverse the shift (decode)
             let shifted = lowerCaseNum - shift;
-            if(shifted > 122 )
+            if(shifted > 123 )
             {
               //if shifted value is greater than 122 subtract 26 to make it a valid askii number
               shifted = shifted - 26;
-            } else if(shifted < 97) {
+            } else if(shifted < 96) {
               //if shifted value is greater than 122 subtract 26 to make it a valid askii number
               shifted = shifted + 26;
             }
@@ -58,7 +58,7 @@ const caesarModule = (function () {
           //add shiftedChar to our return value
           newPhrase = newPhrase + shiftedChar;
         
-      }         
+      }       
     }
     //returns decoded or encoded message
       return newPhrase;

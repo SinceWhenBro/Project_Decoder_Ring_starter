@@ -25,10 +25,10 @@ describe('polybius', () =>{
 
     it("Should translate 42 to both i and j", () =>{
         let actual = polybius("4432423352125413", false);
-        expect(actual).to.equal("th(i/j)nkful");
+        expect(actual).to.equal("thi/jnkful");
     });
     it('Returns false if the length of all number is odd', () =>{
-        let actual = polybius(4432324);
+        let actual = polybius("4432324", false);
         expect(actual).to.be.false;
     });
 });

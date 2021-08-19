@@ -40,7 +40,7 @@ const polybiusModule = (function () {
     const nonSpaceChars = input.split(' ').reduce((acc, ele) => acc += ele.length, 0)
     let answerStr = ''
     //checks if number of chars is even
-    if (!encode && nonSpaceChars % 2 != 0) {
+    if (!encode && nonSpaceChars % 2 !== 0) {
       return false
     } else if (!encode) {
       let cipherKey = ''
